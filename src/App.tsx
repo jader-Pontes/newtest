@@ -1,11 +1,11 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import { useState, useEffect } from "react";
+import {useContext } from "react";
 
 //css
 import './App'
 
 //Context
-import {AuthProvider} from './context/Authcontext'
+import {authContext, AuthProvider} from './context/Authcontext'
 
 //Components
 import Navbar from './components/Navbar';
@@ -23,10 +23,7 @@ import Post from "./pages/PostBlog"
 
 function App() {
 
-  const [user,setUser]=useState<Boolean>(false)
-  const [password, setPassword] = useState<string>('');
-  const [email,setEmail]=useState<string>('')
-
+  const {user}=useContext(authContext)
  
   return (
     <div className="App">

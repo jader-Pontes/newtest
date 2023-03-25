@@ -1,13 +1,23 @@
-import React,{createContext,useState,useContext}from 'react';
+import React,{createContext,useState}from 'react';
 
 type ContextProvider={
-  children: React.ReactNode
+  children: React.ReactNode;
+}
+type PropsUserContext={
+  user:boolean;
+  setUser:(newUser:boolean)=>void
 }
 
-export const authContext=createContext({user:false,setUser:(user:boolean)=>{}});
+const initialState={
+  user:false,
+  setUser:()=>{},
+}
+
+export const authContext=createContext<PropsUserContext>(initialState);
 
 export const AuthProvider=({children}:ContextProvider)=>{
-  const[user,setUser]=useState<boolean>(false)
+  const[user,setUser]=useState<boolean>(initialState.user)
+
     return (
       <authContext.Provider value={{user,setUser}}>
         {children} 
@@ -15,6 +25,3 @@ export const AuthProvider=({children}:ContextProvider)=>{
     )
 }
 
-export function AuthValue() {
-  return useContext(authContext);
-}

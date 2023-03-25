@@ -1,35 +1,39 @@
 import axios from 'axios';
 
-//types
-import {UsersTypes} from '../types/users'
-import { Post } from './../types/post';
 
-const url=axios.create({url:'https://jsonplaceholder.typicode.com'});
+const url=axios.create({baseURL:'https://jsonplaceholder.typicode.com'});
 
 export const Requisition={
   getAllPosts:async()=>{
-    const response=await url.get('/posts')
-      return response.data;
+    try{  
+      const response=await url.get('/posts')
+        return response.data.toString() ;
+    }catch(err){
+      console.log(err);
+    }    
   },
   getUserInfo:async(id:number)=>{
-    const response=await url.get(`users/${id}`)
-      return response.data;
+    try{
+      const response=await url.get(`/users/${id}`)
+        return response.data;
+    }catch(err){
+      console.log(err);
+    }  
   },
   getCommentsPost:async(id:number)=>{
-    const response=await url.get(`/posts/${id}/comments`);
-      return response.data;
-  },
-  getToken:async(username:string,password:string)=>{
-      /*
-        Demostração de como enviar via axios token para autenticação.
-      */
-    const token = Buffer.from(`${username}:${password}`, 'utf8').toString('base64');
-    const url='https://...'
-    const data={};
-    axios.post(url,data,{headers:{'Authorization':`Basic${token}`}});
+    try{
+      const response=await url.get(`/posts/${id}/comments`);
+        return response.data;
+    }catch(err){
+      console.log(err);
+    }  
   },
   getAllUsers:async()=>{
-    const response=await url.get('/users')
-       return response.data;
+    try{
+      const response=await url.get('/users')
+        return response.data
+    }catch(err){
+      console.log(err)
+    }
   }
 }

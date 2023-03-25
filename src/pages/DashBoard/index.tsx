@@ -18,7 +18,7 @@ const Dashboard = () => {
 useEffect(()=>{
   const allPost=async()=>{
     const value= await Requisition.getAllPosts();
-    return setPosts(value)
+     return setPosts(value)
   }
   allPost()  
 },[posts])
