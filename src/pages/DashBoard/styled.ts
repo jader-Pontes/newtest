@@ -2,12 +2,11 @@ import styled from 'styled-components';
 
 
 export const Container=styled.div`
-.dashboard {
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
     .dashboard h2 {
       font-size: 2.2em;
@@ -45,7 +44,7 @@ export const Container=styled.div`
       justify-content: space-between;
       align-items: center;
       border-bottom: 1px solid #eee;
-      width: 80%;
+      width: 90%;
       padding: 10px;
     }
 
@@ -60,5 +59,4 @@ export const Container=styled.div`
       width: 100px;
       font-size: 0.7em;
     }
-  }  
 `

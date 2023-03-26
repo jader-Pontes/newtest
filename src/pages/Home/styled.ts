@@ -2,19 +2,17 @@ import styled from 'styled-components';
 
 
 export const Container=styled.div`
-  
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
  
   .search_form{
     max-width: 100%;
     width: 60%;
     display: flex;
     justify-content: center;
-    margin-bottom: 2em;
+    margin-bottom: 1.5em;
   } 
   
   .search_form input{

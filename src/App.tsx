@@ -17,9 +17,10 @@ import About from "./pages/About";
 import Search from "./pages/Search";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-import Dashboard from "./pages/DashBoard";
-import Post from "./pages/PostBlog"
-
+import DashBoard from "./pages/DashBoard";
+import Post from "./pages/PostBlog";
+import CreatePost from "./pages/CreatePost";
+import EditPost from "./pages/EditPost";
 
 function App() {
 
@@ -34,11 +35,19 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/about" element={<About />} />
+              <Route 
+                path="/posts/create"
+                element={user ? <Navigate to="/login" /> : <CreatePost />}
+              />
+               <Route
+                path="/posts/edit/:id"
+                element={user ? <EditPost/> : <Navigate to="/login" />}
+              />
               <Route path="/posts/:id" element={<Post />} />
               <Route path="/search" element={<Search />} />
               <Route
                 path="/login"
-                element={!user ? <Login /> : <Navigate to="/" />}
+                element={!user ? <Login /> : <Navigate to="/" /> }
               />
               <Route
                 path="/register"
@@ -46,7 +55,7 @@ function App() {
               />
               <Route
                 path="/dashboard"
-                element={user ? <Dashboard /> : <Navigate to="/login" />}
+                element={user ?<Navigate to="/login" />:<DashBoard />}
               />
             </Routes>
           </div>

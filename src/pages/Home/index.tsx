@@ -1,25 +1,39 @@
 import { useNavigate, Link } from "react-router-dom";
-import {useState } from "react";
+import {useState,useEffect } from "react";
 
 // CSS
-import * as C from "./styled";
+import {Container} from "./styled";
 
 //Hook
 import {Requisition} from '../../Hooks/useRequest'
 
 //Components
-import PostDetail from "../../components/PostInfo";
+import Postinfo from "../../components/PostInfo";
 
 //types
 import { Post } from "../../types/post";
 
 const Home = () => {
   
-
   const navigate = useNavigate();
-  const [posts,setPosts]=useState([Requisition.getAllPosts])
+  
   const [loading,setloading]=useState<boolean>(false);
   const [query, setQuery] = useState("");
+
+
+
+  const [posts,setPosts]=useState<Post[]>([]);
+
+  const allPost=async()=>{
+    const value= await Requisition.getAllPosts();
+      setPosts(value);
+  };
+  
+  useEffect(()=>{
+      allPost();  
+  },[posts]);
+ 
+
 
   const handleSubmit = (e:React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -32,7 +46,7 @@ const Home = () => {
   };
 
   return (
-    <C.Container >
+    <Container >
       <h1>Veja os nossos posts mais recentes</h1>
       <form  onSubmit={handleSubmit}>
         <input
@@ -45,16 +59,16 @@ const Home = () => {
       <div className="post-list">
         {loading && <p>Carregando...</p>}
         {posts && posts.length === 0 && (
-          <div className={C.Container.noposts}>
+          <div className='noposts'>
             <p>Não foram encontrados posts</p>
             <Link to="/posts/create" className="btn">
               Criar primeiro post
             </Link>
           </div>
         )}
-        {posts && posts.map((post,index) => <PostDetail key={index} post={post} />)}
+        {posts && posts.map((post,index) => <Postinfo key={index} post={post} />)}
       </div>
-    </C.Container>
+    </Container>
   );
 };
 

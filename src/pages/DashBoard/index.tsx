@@ -1,34 +1,39 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 //styled-component
 import {Container} from "./styled";
-
 //type
 import {Post} from '../../types/post'
-
 //hook
 import { Requisition } from "../../Hooks/useRequest";
+//context
+import { authContext } from "../../context/Authcontext";
+import { user } from "../../types/user";
+import Postinfo from "../../components/PostInfo";
+
 
 const Dashboard = () => {
 
-  const [posts,setPosts]=useState<Post[]>([])
+  const{user}=useContext(authContext);
 
+  const [posts,setPosts]=useState<Post[]>([]);
+    const {userId}=useContext(authContext);
 
-useEffect(()=>{
-  const allPost=async()=>{
+  const allPostId=async()=>{
+    const {id}=userId
     const value= await Requisition.getAllPosts();
-     return setPosts(value)
-  }
-  allPost()  
-},[posts])
-
-const deleteDocument=(post:[])=>{
-
-}
+    const postInfo=value.filter((value:Post)=>value.userId===id)
+    
+      setPosts(postInfo);
+  };
 
 
-  return (
+  useEffect(()=>{
+      allPostId();  
+  },[posts,userId]);
+ 
+return (
     <Container className='dashboard'>
       <h2>Dashboard</h2>
       <p>Gerencie os seus posts</p>
@@ -45,9 +50,8 @@ const deleteDocument=(post:[])=>{
           <span>Ações</span>
         </div>
       )}
-
       {posts &&
-        posts.map((post:any) => (
+        posts.map((post:Post) => (
           <div className='post_row' key={post.id}>
             <p>{post.title}</p>
             <div className="actions">
@@ -58,7 +62,6 @@ const deleteDocument=(post:[])=>{
                 Editar
               </Link>
               <button
-                onClick={() => deleteDocument(post.id)}
                 className="btn btn-outline btn-danger"
               >
                 Excluir

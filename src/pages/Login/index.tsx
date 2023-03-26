@@ -1,48 +1,57 @@
+//Dependecias
+import { useEffect,useState,useContext } from "react";
+import { useNavigate } from "react-router-dom";
 //css
 import {Container} from "./styled";
-//dependecias
-import { useEffect,useState,useContext } from "react";
 //Context
 import {authContext} from "../../context/Authcontext";
-//hook
+//Hook
 import { Requisition } from "../../Hooks/useRequest";
 //types
 import{user} from '../../types/user'
+import { UsersTypes } from "../../types/users";
 
 const Login = () => {
+
+  const navigate=useNavigate();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading,setLoading]=useState<boolean>(false);
-  const [users,setUsers]=useState([])  
+  const [users,setUsers]=useState([]);  
   const {setUser}=useContext(authContext);
+  const {setUserId}=useContext(authContext);
   
-  
-  const loadUSer=async()=>{
-    const usersLoad=await Requisition.getAllUsers()
-    setUsers(usersLoad)
-  }
+    const loadUSer=async()=>{
+      const usersLoad=await Requisition.getAllUsers()
+      setUsers(usersLoad);
+    }
+    const findUser=(user:UsersTypes,email:string)=>{
+        return user.email===email
+    }
 
-  const verify=()=>{
-      const values=users
-        const checked=values.some((value:any)=>value.email===email)
+    const verify=()=>{
+        const checked=users.some((value:any)=>value.email===email);
+        const value:any=users.find((value:any)=>value.email===email)
+          setUserId(value);
       if(checked&&password){
-        return setUser(true);
+        setUser(true);
+        navigate('/');
+        return;
       }
-        return setUser(false);
-  };
-  
+      return setUser(false);
+    };
 
-  const handleSubmit = async (e:React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault(); 
-     setEmail('')
-     setPassword('')
-     verify()
-  }
+    const handleSubmit = async (e:React.FormEvent<HTMLFormElement>) => {
+      e.preventDefault(); 
+        setEmail('');
+        setPassword('');
+        verify();
+    }
 
-  useEffect(()=>{
-      loadUSer()
-  },[users])
+    useEffect(()=>{
+        loadUSer();
+    },[users])
 
   return (
     <Container className="login">

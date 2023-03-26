@@ -2,7 +2,7 @@
 import {Nav} from "./styled"
 
 //dependencia
-import { NavLink } from 'react-router-dom';
+import { NavLink,useNavigate } from 'react-router-dom';
 import {useContext} from 'react'
 
 //context
@@ -10,12 +10,19 @@ import {authContext} from '../../context/Authcontext'
 
 const Navbar = () => {
 
-    const {user}=useContext(authContext)
+    const {user,setUser}=useContext(authContext)
+      const navigate=useNavigate();
+      
+    const Logout=()=>{
+      setUser(false)
+      navigate('/')
+      return;
+    }
 
   return (
     <Nav className='navbar'>
       <NavLink className='brand' to="/">
-        Mini <span>Blog</span>
+        Alkabot <span>Blog</span>
       </NavLink>
       <ul className='links_list'>
         <li>
@@ -76,7 +83,7 @@ const Navbar = () => {
         </li>
         {user && (
           <li>
-            <button>Sair</button>
+            <button onClick={Logout}>Sair</button>
           </li>
         )}
       </ul>

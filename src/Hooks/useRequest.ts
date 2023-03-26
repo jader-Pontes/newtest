@@ -7,7 +7,7 @@ export const Requisition={
   getAllPosts:async()=>{
     try{  
       const response=await url.get('/posts')
-        return response.data.toString() ;
+        return response.data;
     }catch(err){
       console.log(err);
     }    
@@ -30,10 +30,10 @@ export const Requisition={
   },
   getAllUsers:async()=>{
     try{
-      const response=await url.get('/users')
-        return response.data
+      const response=await url.get('/users');
+        return response.data;
     }catch(err){
-      console.log(err)
+      console.log(err);
     }
   }
 }

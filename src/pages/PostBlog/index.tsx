@@ -22,14 +22,6 @@ const PostBlog = () => {
           <h1>{post.title}</h1>
           <p>{post.body}</p>
           <h3>Este post trata sobre:</h3>
-          <div className='tags'>
-            {post.tags.map((tag:any) => (
-              <p key={tag}>
-                <span>#</span>
-                {tag}
-              </p>
-            ))}
-          </div>
         </>
       )}
     </Container>
