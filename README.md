@@ -1,6 +1,6 @@
 # Projeto Blog 
 
-Projeto criado para alkabot para testar minha habilidades.
+Projeto criado para a alkabot para testar minha habilidades.
 
 ## Run Project
 
