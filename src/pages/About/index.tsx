@@ -1,7 +1,8 @@
+import { Link } from 'react-router-dom';
+
 //styled-components
 import {Container} from './styled';
 
-import { Link } from 'react-router-dom';
 
 const About = () => {
     return (

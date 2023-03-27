@@ -26,14 +26,13 @@ const Login = () => {
       const usersLoad=await Requisition.getAllUsers()
       setUsers(usersLoad);
     }
-    const findUser=(user:UsersTypes,email:string)=>{
-        return user.email===email
+    const findUser=()=>{
+      const value:any=users.find((value:any)=>value.email===email)
+        setUserId(value);
     }
 
     const verify=()=>{
         const checked=users.some((value:any)=>value.email===email);
-        const value:any=users.find((value:any)=>value.email===email)
-          setUserId(value);
       if(checked&&password){
         setUser(true);
         navigate('/');
@@ -44,13 +43,16 @@ const Login = () => {
 
     const handleSubmit = async (e:React.FormEvent<HTMLFormElement>) => {
       e.preventDefault(); 
+      setLoading(true);
         setEmail('');
         setPassword('');
         verify();
+        findUser();
+      setLoading(false);  
     }
 
     useEffect(()=>{
-        loadUSer();
+      loadUSer();
     },[users])
 
   return (

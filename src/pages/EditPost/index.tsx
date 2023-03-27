@@ -11,16 +11,23 @@ const EditPost = () => {
   const [title, setTitle] = useState("");
   const [image, setImage] = useState("");
   const [body, setBody] = useState("");
-  const [tags, setTags] = useState<string[]>([]);
+  const [tags, setTags] = useState<string[]>();
   const [formError, setFormError] = useState("");
-  const [error,setError]=useState();
-  const [loading,setLoading]=useState();
+  const [error,setError]=useState('');
+  const [loading,setLoading]=useState(false);
   const [post,setPost]=useState<Post>();
 
 
   const handleSubmit = (e:React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setFormError("");
+    setLoading(true);
+      setFormError("");
+      setTitle('');
+      setImage('');
+      setBody('');
+      setTags([]);
+      setError('');
+    setLoading(false);  
   }
   
   return (

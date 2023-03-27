@@ -24,7 +24,7 @@ export const authContext=createContext<PropsUserContext>(initialState);
 export const AuthProvider=({children}:ContextProvider)=>{
   const [user,setUser]=useState<boolean>(initialState.user)
   const [userId,setUserId]=useState(initialState.userId); 
-
+  
     return (
       <authContext.Provider value={{user,setUser,userId,setUserId}}>
         {children} 

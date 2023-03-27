@@ -23,11 +23,4 @@ export const Container=styled.div`
   .tags span {
     font-weight: bold;
   }
-
-  .createdby {
-    font-style: italic;
-    color: #444;
-    font-size: 0.8em;
-    margin-bottom: 1em;
-  }
 `

@@ -1,7 +1,7 @@
 import { useNavigate, Link } from "react-router-dom";
 import {useState,useEffect } from "react";
 
-// CSS
+//styled-components
 import {Container} from "./styled";
 
 //Hook
@@ -66,7 +66,7 @@ const Home = () => {
             </Link>
           </div>
         )}
-        {posts && posts.map((post,index) => <Postinfo key={index} post={post} />)}
+        {posts && posts.map((post:Post) => <Postinfo  post={post} />)}
       </div>
     </Container>
   );

@@ -14,29 +14,16 @@ const Register = () => {
 
   const handleSubmit = async (e:React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
-    setError("");
-
-    const user = {
-      displayName,
-      email,
-      password,
-    };
-
-    if (password !== confirmPassword) {
-      setError("As senhas precisam ser iguais.");
-      return;
-    }
-
-
-    // console.log(res);
+      setEmail('');
+      setPassword('')
+      setConfirmPassword('')
+      setError("")
+      /*
+        faltou um endpoint para enviar para um DB;
+        requisição não vem com senha criando apenas para mostrar capacidade;
+      */
   };
 
-  // useEffect(() => {
-  //   if (authError) {
-  //     setError(authError);
-  //   }
-  // }, [authError]);
 
   return (
     <Container className='register'>

@@ -1,6 +1,7 @@
 import React,{useContext,useState} from "react";
 import {useNavigate} from  'react-router-dom'
-//css
+
+//styled-components
 import {Container} from './styled'
 
 
@@ -10,17 +11,25 @@ const CreatePost = () => {
   const [body, setBody] = useState("");
   const [tags, setTags] = useState<string[]>([]);
   const [formError, setFormError] = useState("");
-  const [loading,setLoading]=useState();
+  const [loading,setLoading]=useState(Boolean);
   const [error,setError]=useState();
 
 
   const handleSubmit = (e:React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setFormError("");
+    setLoading(true)
+      setFormError("");
+      setTitle('');
+      setImage('');
+      setTags([]);
+      setBody('');
+      setError(undefined)
+    setLoading(false)    
+
   }
 
   return (
-    <Container className='create_post'>
+    <Container className="create_post">
       <h2>Criar post</h2>
       <p>Escreva sobre o que quiser e compartilhe o seu conhecimento!</p>
       <form onSubmit={handleSubmit}>

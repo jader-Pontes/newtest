@@ -18,7 +18,6 @@ import Search from "./pages/Search";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import DashBoard from "./pages/DashBoard";
-import Post from "./pages/PostBlog";
 import CreatePost from "./pages/CreatePost";
 import EditPost from "./pages/EditPost";
 
@@ -41,9 +40,8 @@ function App() {
               />
                <Route
                 path="/posts/edit/:id"
-                element={user ? <EditPost/> : <Navigate to="/login" />}
+                element={user ? <Navigate to="/login" /> : <EditPost/>}
               />
-              <Route path="/posts/:id" element={<Post />} />
               <Route path="/search" element={<Search />} />
               <Route
                 path="/login"
