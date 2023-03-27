@@ -14,6 +14,7 @@ const CreatePost = () => {
   const [loading,setLoading]=useState(Boolean);
   const [error,setError]=useState();
 
+  //Posts faltou função para agrupar todos os dados em um array (Posts);
 
   const handleSubmit = (e:React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();

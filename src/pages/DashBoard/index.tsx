@@ -23,7 +23,7 @@ const Dashboard = () => {
   const {userId}=useContext(authContext);
   const [posts,setPosts]=useState<Post[]>([]);
   
-
+      //Pegando posts apenas do usuário logado;
   const allPostId=async()=>{
     const {id}=userId
     const value= await Requisition.getAllPosts();
@@ -31,6 +31,7 @@ const Dashboard = () => {
       setPosts(postInfo);
   };
   
+  //Deletando Posts na dashboard
   const delPost=(id:number)=>{
     const newValue=posts.filter((data:Post)=> id !== data.id)
       setPosts(newValue);

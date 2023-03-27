@@ -31,4 +31,9 @@ export const Container=styled.div`
   .noposts a{
     padding: 10px 25px;
   }
+
+  @media(max-width:500px){
+
+  }
+
 `;

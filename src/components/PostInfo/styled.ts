@@ -23,4 +23,20 @@ export const Container=styled.div`
   .tags span {
     font-weight: bold;
   }
+
+  @media(max-width:600px){
+    margin-top:2em;
+    height:230px;
+    border:1px solid black;
+    padding-left:5px;
+  }
+
+  .tags p {
+    margin-right: .7em;
+  }
+
+  .post_detail .tags {
+    display: flex;
+  }
+
 `

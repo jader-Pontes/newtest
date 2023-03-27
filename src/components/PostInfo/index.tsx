@@ -5,10 +5,10 @@ import {Container} from './styled';
 
 
 
-const Postinfo = ({post}:any) => {
+const Postinfo = ({post,index}:any) => {
 
   return (
-    <Container className='post_detail' key={post.id}>
+    <Container className='post_detail' key={index}>
       <img src={post.image} alt={post.title} />
       <h2>{post.title}</h2>
       <Link to={`/posts/${post.id}`} className="btn btn-outline">

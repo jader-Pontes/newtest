@@ -1,5 +1,4 @@
 import React,{createContext,useState}from 'react';
-import { UsersTypes } from '../types/users';
 
 type ContextProvider={
   children: React.ReactNode;

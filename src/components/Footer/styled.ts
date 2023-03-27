@@ -9,5 +9,17 @@ export const Footer_div=styled.div`
     align-items: center;
     justify-content: center;
     background-color: #edf3f6;
+
+    @media (max-width:500px){
+       text-align:center;
+       margin-top:250px;
+    }
+
+    @media(min-width:600px){
+        margin-top:370px;
+     }
     
+     @media(min-width:700px){
+        margin-top:700px;
+     }
 `

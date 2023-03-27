@@ -17,6 +17,8 @@ const EditPost = () => {
   const [loading,setLoading]=useState(false);
   const [post,setPost]=useState<Post>();
 
+  //Não terminado
+  //Falta pegar os dados vindo de um array e modificar de acordo com setState do formulário;
 
   const handleSubmit = (e:React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();

@@ -9,10 +9,10 @@ import {authContext} from "../../context/Authcontext";
 import { Requisition } from "../../Hooks/useRequest";
 //types
 import{user} from '../../types/user'
-import { UsersTypes } from "../../types/users";
 
 const Login = () => {
 
+  //Metodo para redirecionar
   const navigate=useNavigate();
 
   const [email, setEmail] = useState("");
@@ -22,15 +22,18 @@ const Login = () => {
   const {setUser}=useContext(authContext);
   const {setUserId}=useContext(authContext);
   
+    //Função para pegar todos os usuários
     const loadUSer=async()=>{
       const usersLoad=await Requisition.getAllUsers()
       setUsers(usersLoad);
     }
+    //Pegar valores do usuario(id)
     const findUser=()=>{
       const value:any=users.find((value:any)=>value.email===email)
         setUserId(value);
     }
-
+      //função para verificar usuário na falta de Token utilizei função simples;
+      //Pode ser usada qualquer senha o email deve ser o mesmo do EndPoint;
     const verify=()=>{
         const checked=users.some((value:any)=>value.email===email);
       if(checked&&password){
@@ -41,7 +44,8 @@ const Login = () => {
       return setUser(false);
     };
 
-    const handleSubmit = async (e:React.FormEvent<HTMLFormElement>) => {
+    //Submit do formulário
+    const handleSubmit= async (e:React.FormEvent<HTMLFormElement>) => {
       e.preventDefault(); 
       setLoading(true);
         setEmail('');
@@ -59,13 +63,12 @@ const Login = () => {
     <Container className="login">
       <h1>Entrar</h1>
       <p>Faça o login para poder utilizar o sistema</p>
-      <form onClick={handleSubmit}>
+      <form onSubmit={handleSubmit}>
         <label>
           <span>E-mail:</span>
           <input
             type="email"
             name="email"
-            required
             placeholder="E-mail do usuário"
             onChange={(e) => setEmail(e.target.value)}
             value={email}
@@ -76,7 +79,6 @@ const Login = () => {
           <input
             type="password"
             name="password"
-            required
             placeholder="Insira a senha"
             onChange={(e) => setPassword(e.target.value)}
             value={password}

@@ -11,6 +11,7 @@ export const Requisition={
         return response.data;
     }catch(err){
       console.log(err);
+       return;
     }    
   },
   getUserInfo:async(id:number)=>{
@@ -20,6 +21,7 @@ export const Requisition={
         return response.data;
     }catch(err){
       console.log(err);
+        return;
     }  
   },
   getCommentsPost:async(id:number)=>{
@@ -29,6 +31,7 @@ export const Requisition={
         return response.data;
     }catch(err){
       console.log(err);
+        return;
     }  
   },
   getAllUsers:async()=>{
@@ -38,6 +41,7 @@ export const Requisition={
         return response.data;
     }catch(err){
       console.log(err);
+        return;
     }
   }
 }

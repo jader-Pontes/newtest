@@ -16,5 +16,18 @@ export const Container=styled.div`
     margin-top: 15px;
     padding: 10px 15px;
   }
+
+  @media (max-width:500px){
+    text-align:center;
+    margin-top:250px;
+ }
+
+ @media(min-width:600px){
+     margin-top:230px;
+  }
+ 
+  @media(max-width:1024px){
+     margin-top:700px;
+  }
 `;
 

@@ -24,6 +24,7 @@ const Home = () => {
 
   const [posts,setPosts]=useState<Post[]>([]);
 
+  //Pega todos os Posts
   const allPost=async()=>{
     const value= await Requisition.getAllPosts();
       setPosts(value);
@@ -34,7 +35,9 @@ const Home = () => {
   },[posts]);
  
 
-
+//Pegando a quey na url
+//falta terminar logica e implementar
+//Barra de pesquisa
   const handleSubmit = (e:React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -66,7 +69,7 @@ const Home = () => {
             </Link>
           </div>
         )}
-        {posts && posts.map((post:Post) => <Postinfo  post={post} />)}
+        {posts && posts.map((post:Post,index) => <Postinfo key={index} post={post} />)}
       </div>
     </Container>
   );
